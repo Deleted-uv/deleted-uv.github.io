@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Clicker</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #2a152b;
+      color: #fff;
+      font-family: 'WinkyRough', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    @font-face {
+      font-family: 'WinkyRough';
+      src: url('fonts/WinkyRough.ttf') format('truetype');
+    }
+
+    #score {
+      font-size: 100px;
+      margin-bottom: 20px;
+      transition: font-size 0.2s ease;
+    }
+
+    #sakura {
+      width: 300px;
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    /* Адаптивный размер шрифта */
+    @media (max-width: 600px) {
+      #score {
+        font-size: 50px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      #score {
+        font-size: 75px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="score">0</div>
+  <img id="sakura" src="sakura.png" alt="Сакура">
+
+  <script>
+    let score = 0;
+
+    const scoreElement = document.getElementById('score');
+    const sakuraImage = document.getElementById('sakura');
+
+    sakuraImage.addEventListener('click', async () => {
+      score++;
+
+      // Обновление счёта
+      scoreElement.textContent = score;
+
+      // Анимация уменьшения и возвращения изображения
+      sakuraImage.style.transform = 'scale(0.85)';
+      setTimeout(() => {
+        sakuraImage.style.transform = 'scale(1.0)';
+      }, 150);
+    });
+  </script>
+
+</body>
+</html>
